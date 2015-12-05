@@ -4,7 +4,7 @@ okulbilisim_feedback_new:
     defaults: { _controller: OkulbilisimFeedbackBundle:Feedback:new }
 
 okulbilisim_feedback_homepage:
-    path:     /feedback/{status}
+    path:     /admin/feedback/{status}
     defaults: { _controller: OkulbilisimFeedbackBundle:FeedbackAdmin:index,status: 0 }
 
 okulbilisim_feedback_inbox:
