@@ -5,14 +5,17 @@ $(document).ready ->
     mark_as_done: $(".feedback-mark-as-done")
     show_content: $(".feedback-show-content")
 
-  buttons.remove.on 'click', ->
-    feedback.remove $(this).data 'content-id'
+  buttons.remove.on 'click', (e) ->
+    e.preventDefault();
+    feedback.remove $(this).attr 'href'
 
-  buttons.mark_as_done.on 'click', ->
-    feedback.mark_as.done $(this).data 'content-id'
+  buttons.mark_as_done.on 'click', (e) ->
+    e.preventDefault();
+    feedback.mark_as.done $(this).attr 'href'
 
-  buttons.mark_as_read.on 'click', ->
-    feedback.mark_as.read $(this).data 'content-id'
+  buttons.mark_as_read.on 'click', (e) ->
+    e.preventDefault();
+    feedback.mark_as.read $(this).attr 'href'
 
   buttons.show_content.on 'click', ->
     feedback.show_content $(this).data 'content-id'
@@ -20,12 +23,12 @@ $(document).ready ->
   return;
 
 feedback =
-  remove: (id)->
+  remove: (href)->
     sure = confirm("Are you sure?")
     if(!sure)
       return false
     $.ajax
-      url: "/admin/feedback/remove/#{id}"
+      url: "#{href}"
       type: "DELETE"
       dataType: 'json'
       success: (rd)->
@@ -38,9 +41,9 @@ feedback =
     $("#entity_#{id}").slideToggle()
     return false
   mark_as:
-    read: (id)->
+    read: (href)->
       $.ajax
-        url: "/admin/feedback/mark/read/#{id}"
+        url: "#{href}"
         type: "GET"
         dataType: "json"
         success: (rd)->
@@ -49,9 +52,9 @@ feedback =
           else
             alert 'An error has occured'
       return false
-    done: (id)->
+    done: (href)->
       $.ajax
-        url: "/admin/feedback/mark/done/#{id}"
+        url: "#{href}"
         type: "GET"
         dataType: "json"
         success: (rd)->

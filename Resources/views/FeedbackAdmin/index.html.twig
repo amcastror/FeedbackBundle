@@ -34,15 +34,15 @@
                     <a href="#" class="feedback-show-content" data-content-id="{{ entity.id }}"
                        title="{{ "feedback.show_content"|trans }}"><i
                                 class="fa fa-bars"></i></a>
-                    <a href="#" class="feedback-mark-as-read" data-content-id="{{ entity.id }}"
+                    <a href="{{path('okulbilisim_feedback_mark_read', {id: entity.id})}}" class="feedback-mark-as-read"
                        title="{{ "feedback.markas.read"|trans }}"><i
                                 class="fa fa-circle"></i></a>
-                    <a href="#" class="feedback-mark-as-done" data-content-id="{{ entity.id }}"
+                    <a href="{{path('okulbilisim_feedback_mark_done', {id: entity.id})}}" class="feedback-mark-as-done"
                        title="{{ "feedback.markas.done"|trans }}"><i
                                 class="fa fa-check-circle"></i></a>
-                    <a href="#" class="feedback-delete" data-content-id="{{ entity.id }}"
+                    <a href="{{path('okulbilisim_feedback_delete', {id: entity.id})}}" class="feedback-delete"
                        title="{{ "feedback.delete"|trans }}"><i
-                                class="fa fa-trash"></i></a>
+                                class="fa fa-trash-o"></i></a>
                 </td>
             </tr>
             <tr id="entity_{{ entity.id }}" style="display: none">
